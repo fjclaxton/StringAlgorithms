@@ -44,7 +44,7 @@ public class StringAlgorithms {
         if (i<1) {
             s+= word.substring(i, i+1).toUpperCase();
         } else {
-            if (word.substring(i-1, i) == "") {
+            if (word.substring(i-1, i).isBlank()) {
                s+= word.substring(i, i+1).toUpperCase();
             } else {
                s+= word.substring(i, i+1);
@@ -62,7 +62,15 @@ public class StringAlgorithms {
      */
     public static boolean detectPalindrome(String word) {
         // TODO: Implement this method
-        return false;
+        boolean s = false;
+        for (int i = 0; i<word.length(); i++) {
+            if (word.charAt(i) == word.charAt(word.length()-1)) {
+               s = true;
+            } else {
+               s = false;
+            }
+        }
+        return s;
     }
 
 
@@ -74,7 +82,20 @@ public class StringAlgorithms {
      */
     public static char firstUniqueChar(String word) {
         // TODO: Implement this method
-        return ' ';
+        char c = ' ';
+        for (int i = 0; i<word.length(); i++) {
+            c = word.charAt(i);
+            for (int v = 0; v<word.length(); v++) {
+               if (c == word.charAt(v) && i!=v) {
+                  break;
+               }
+               if (v+1 == word.length()) {
+                  return c;
+               }
+            }
+        }
+        
+        return c;
     }
 
 
@@ -102,11 +123,12 @@ public class StringAlgorithms {
         // System.out.println(capitalizeString("the quick brown fox"));
 
         System.out.println("\nTesting detectPalindrome:");
+        System.out.println(detectPalindrome("racecar"));
         // Example:
         // System.out.println(detectPalindrome("racecar"));
 
         System.out.println("\nTesting firstUniqueChar:");
         // Example:
-        // System.out.println(firstUniqueChar("swiss"));
+        System.out.println(firstUniqueChar("swiss"));
     }
 }
