@@ -25,8 +25,8 @@ public class StringAlgorithms {
         // TODO: Implement this method
         String s = "";
         for (int i = 0; i<word.length(); i++) {
-            s+= word.substring(word.length() - i, (word.length()-i) -1);
-            s+="\n"
+            s+= word.substring((word.length() - i)-1, (word.length()-i));
+            s+="\n";
         }
         return s;
     }
@@ -37,9 +37,21 @@ public class StringAlgorithms {
      * Write a method that takes a String 'sentence' and returns
      * the sentence with the first letter of each word capitalized.
      */
-    public static String capitalizeString(String sentence) {
+    public static String capitalizeString(String word) {
         // TODO: Implement this method
-        return "";
+        String s = "";
+        for (int i = 0; i<word.length(); i++) {
+        if (i<1) {
+            s+= word.substring(i, i+1).toUpperCase();
+        } else {
+            if (word.substring(i-1, i) == "") {
+               s+= word.substring(i, i+1).toUpperCase();
+            } else {
+               s+= word.substring(i, i+1);
+            }
+        }
+        }
+        return s;
     }
 
 
@@ -85,6 +97,7 @@ public class StringAlgorithms {
         // System.out.println(reverseWord("hello"));
 
         System.out.println("\nTesting capitalizeString:");
+        System.out.println(capitalizeString("the quick brown fox"));
         // Example:
         // System.out.println(capitalizeString("the quick brown fox"));
 
