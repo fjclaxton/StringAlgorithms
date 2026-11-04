@@ -63,7 +63,7 @@ public class StringAlgorithms {
         // TODO: Implement this method
         boolean s = false;
         for (int i = 0; i<word.length(); i++) {
-            if (word.charAt(i) == word.charAt(word.length()-1)) {
+            if (Character.toLowerCase(word.charAt(i)) == Character.toLowerCase(word.charAt((word.length()-1)-i))) {
                s = true;
             } else {
                s = false;
@@ -121,6 +121,8 @@ public class StringAlgorithms {
 
         System.out.println("\nTesting detectPalindrome:");
         System.out.println(detectPalindrome("racecar"));
+        System.out.println(detectPalindrome("RaceCar"));
+        System.out.println(detectPalindrome("House"));
 
         System.out.println("\nTesting firstUniqueChar:");
         System.out.println(firstUniqueChar("swiss"));
