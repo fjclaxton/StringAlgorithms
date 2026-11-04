@@ -26,7 +26,6 @@ public class StringAlgorithms {
         String s = "";
         for (int i = 0; i<word.length(); i++) {
             s+= word.substring((word.length() - i)-1, (word.length()-i));
-            s+="\n";
         }
         return s;
     }
@@ -87,9 +86,13 @@ public class StringAlgorithms {
             c = word.charAt(i);
             for (int v = 0; v<word.length(); v++) {
                if (c == word.charAt(v) && i!=v) {
+                  c=' ';
+                  break;
+               } else if (c == word.charAt(v) && i == word.length()){
+                  c=' ';
                   break;
                }
-               if (v+1 == word.length()) {
+               if (v+1 == word.length() && c != word.charAt(v)) {
                   return c;
                }
             }
@@ -109,26 +112,17 @@ public class StringAlgorithms {
         
         System.out.println("Testing printCharacters:");
         System.out.println(printCharacters("hello"));
-        // Example:
-        // System.out.println(printCharacters("hello"));
 
         System.out.println("\nTesting reverseWord:");
         System.out.println(reverseWord("hello"));
-        // Example:
-        // System.out.println(reverseWord("hello"));
 
         System.out.println("\nTesting capitalizeString:");
         System.out.println(capitalizeString("the quick brown fox"));
-        // Example:
-        // System.out.println(capitalizeString("the quick brown fox"));
 
         System.out.println("\nTesting detectPalindrome:");
         System.out.println(detectPalindrome("racecar"));
-        // Example:
-        // System.out.println(detectPalindrome("racecar"));
 
         System.out.println("\nTesting firstUniqueChar:");
-        // Example:
         System.out.println(firstUniqueChar("swiss"));
     }
 }
